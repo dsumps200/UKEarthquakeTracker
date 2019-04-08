@@ -65,9 +65,9 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Vi
         viewHolder.dateTime.setText(earthquakes.get(i).getDateTime());
         float magnitude = earthquakes.get(i).getMagnitude();
         viewHolder.magnitudeNo.setText(Float.toString(magnitude));
-        if (magnitude>=4.0) {
+        if (magnitude>=2.5) {
             viewHolder.magnitudeCircle.setImageResource(R.drawable.ic_magnitude_high);
-        } else if (magnitude<4.0 && magnitude>=2.0){
+        } else if (magnitude<2.5 && magnitude>=1.5){
             viewHolder.magnitudeCircle.setImageResource(R.drawable.ic_magnitude_medium);
         } else {
             viewHolder.magnitudeCircle.setImageResource(R.drawable.ic_magnitude_low);
