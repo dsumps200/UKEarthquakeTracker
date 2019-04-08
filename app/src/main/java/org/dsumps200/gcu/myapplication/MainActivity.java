@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EarthquakeAdapter.ItemClicked {
 
     //private TextView mTextMessage;
     TextView earthquakeLocation, earthquakeDateTime, earthquakeMagnitude, earthquakeDepth, earthquakeLatitude, earthquakeLongitude;
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         earthquakeDepth = findViewById(R.id.earthquakeDepth);
         earthquakeLatitude = findViewById(R.id.earthquakeLatitude);
         earthquakeLongitude = findViewById(R.id.earthquakeLongitude);
+        onItemClicked(0);
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -48,4 +49,15 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    @Override
+    public void onItemClicked(int i) {
+
+        earthquakeLocation.setText(Application.earthquakes.get(i).getLocation());
+        earthquakeDateTime.setText(Application.earthquakes.get(i).getDateTime());
+        earthquakeMagnitude.setText(Float.toString(Application.earthquakes.get(i).getMagnitude()));
+        earthquakeDepth.setText(Integer.toString(Application.earthquakes.get(i).getDepth()));
+        earthquakeLatitude.setText(Float.toString(Application.earthquakes.get(i).getLatitude()));
+        earthquakeLongitude.setText(Float.toString(Application.earthquakes.get(i).getLongitude()));
+    }
 }

@@ -15,8 +15,15 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Vi
 
     private ArrayList<Earthquake> earthquakes;
 
+    ItemClicked activity;
+
+    public interface ItemClicked {
+        void onItemClicked(int index);
+    }
+
     public EarthquakeAdapter (Context context, ArrayList<Earthquake> earthquakes) {
         this.earthquakes = earthquakes;
+        activity = (ItemClicked) context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -35,7 +42,7 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Vi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    activity.onItemClicked(earthquakes.indexOf(v.getTag()));
                 }
             });
         }
