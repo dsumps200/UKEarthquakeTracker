@@ -11,4 +11,6 @@
     <string name="depth_km">Depth (km):</string>
     <string name="latitude">Latitude:</string>
     <string name="longitude">Longitude:</string>
+    <string name="magnitude_circle">Magnitude Circle</string>
+    <string name="m">M</string>
 </resources>
