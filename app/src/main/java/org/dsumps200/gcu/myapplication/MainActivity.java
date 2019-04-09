@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         earthquakeLocation = findViewById(R.id.earthquakeLocation);
         earthquakeDateTime = findViewById(R.id.earthquakeDateTime);
@@ -36,6 +37,14 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        detailsView.setVisibility(View.GONE);
+        listView.setVisibility(View.VISIBLE);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        return true;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -71,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         if (getString(R.string.screen_size).equals("phone") || getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             detailsView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 }
