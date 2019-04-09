@@ -7,34 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/listDetailsContainer"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/navigation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false" >
 
-        <fragment
-            android:id="@+id/earthquakeListFragment"
-            android:name="org.dsumps200.gcu.myapplication.EarthquakeListFragment"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:layout="@layout/fragment_earthquake_list" />
+            android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/earthquakeDetailsFragment"
-            android:name="org.dsumps200.gcu.myapplication.EarthquakeDetailsFragment"
-            android:layout_width="0dp"
+            <fragment
+                android:id="@+id/earthquakeListFragment"
+                android:name="org.dsumps200.gcu.myapplication.EarthquakeListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_earthquake_list" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detailsView"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            tools:layout="@layout/fragment_earthquake_details" />
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    </LinearLayout>
+            <fragment
+                android:id="@+id/earthquakeDetailsFragment"
+                android:name="org.dsumps200.gcu.myapplication.EarthquakeDetailsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_earthquake_details" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

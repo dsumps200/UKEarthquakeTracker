@@ -1,5 +1,6 @@
 package org.dsumps200.gcu.myapplication;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         earthquakeLongitude = findViewById(R.id.earthquakeLongitude);
         listView = findViewById(R.id.listView);
         detailsView = findViewById(R.id.detailsView);
-        onItemClicked(0);
+        if (getString(R.string.screen_size).equals("tablet") && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            onItemClicked(0);
+        }
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -65,8 +68,9 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         earthquakeLatitude.setText(Float.toString(Application.earthquakes.get(i).getLatitude()));
         earthquakeLongitude.setText(Float.toString(Application.earthquakes.get(i).getLongitude()));
 
-        detailsView.setVisibility(View.VISIBLE);
-        listView.setVisibility(View.GONE);
-
+        if (getString(R.string.screen_size).equals("phone") || getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            detailsView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+        }
     }
 }
