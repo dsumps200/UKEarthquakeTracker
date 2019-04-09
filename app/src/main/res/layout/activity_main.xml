@@ -18,25 +18,32 @@
         android:baselineAligned="false" >
 
         <LinearLayout
-            android:id="@+id/listDetailsContainer"
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <fragment
                 android:id="@+id/earthquakeListFragment"
                 android:name="org.dsumps200.gcu.myapplication.EarthquakeListFragment"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 tools:layout="@layout/fragment_earthquake_list" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/detailsView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <fragment
                 android:id="@+id/earthquakeDetailsFragment"
                 android:name="org.dsumps200.gcu.myapplication.EarthquakeDetailsFragment"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
                 tools:layout="@layout/fragment_earthquake_details" />
 
         </LinearLayout>
