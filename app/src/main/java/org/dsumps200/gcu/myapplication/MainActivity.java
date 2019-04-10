@@ -19,12 +19,13 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
     LinearLayout listView, detailsView;
 
     @Override
-    protected void onSaveInstanceState(Bundle b)
-    {
-        int detailsVis = detailsView.getVisibility();
-        int listVis = listView.getVisibility();
-        b.putInt("detailsVis", detailsVis);
-        b.putInt("listVis", listVis);
+    protected void onSaveInstanceState(Bundle b) {
+        if (getString(R.string.screen_size).equals("phone")) {
+            int detailsVis = detailsView.getVisibility();
+            int listVis = listView.getVisibility();
+            b.putInt("detailsVis", detailsVis);
+            b.putInt("listVis", listVis);
+        }
         ArrayList<String> detailsData = new ArrayList<>();
         detailsData.add(earthquakeLocation.getText().toString());
         detailsData.add(earthquakeDateTime.getText().toString());
@@ -48,9 +49,15 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         earthquakeDepth.setText(detailsData.get(3));
         earthquakeLatitude.setText(detailsData.get(4));
         earthquakeLongitude.setText(detailsData.get(5));
-        detailsView.setVisibility(detailsVis);
-        listView.setVisibility(listVis);
-        if (listVis == View.GONE) {
+        if (getString(R.string.screen_size).equals("phone")) {
+            detailsView.setVisibility(detailsVis);
+            listView.setVisibility(listVis);
+        }
+        if (getString(R.string.screen_size).equals("tablet") && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            detailsView.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+        }
+        if (listVis == View.GONE && getString(R.string.screen_size).equals("phone")) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
