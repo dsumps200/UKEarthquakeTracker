@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
             onItemClicked(0);
         }
         //mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
@@ -105,11 +105,17 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
                 case R.id.navigation_home:
                     //mTextMessage.setText(R.string.title_home);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_map:
                     //mTextMessage.setText(R.string.title_dashboard);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_stats:
+                    //mTextMessage.setText(R.string.title_dashboard);
+                    return true;
+                case R.id.navigation_search:
                     //mTextMessage.setText(R.string.title_notifications);
+                    return true;
+                case R.id.navigation_info:
+                    //mTextMessage.setText(R.string.title_info);
                     return true;
             }
             return false;
