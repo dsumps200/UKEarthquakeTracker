@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="colorPrimaryTest">#b71c1c</color>
     <color name="colorBackground">#eee</color>
     <color name="colorBackgroundCard">#fff</color>
 </resources>
