@@ -123,6 +123,30 @@
                 android:paddingBottom="15dp">
 
                 <TextView
+                    android:id="@+id/earthquakeDepthLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/depth_km"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/earthquakeDepth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text=""
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp">
+
+                <TextView
                     android:id="@+id/earthquakeLongitudeLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,29 +188,6 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="15dp">
-
-                <TextView
-                    android:id="@+id/earthquakeDepthLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/depth_km"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/earthquakeDepth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text=""
-                    android:textSize="12sp" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
