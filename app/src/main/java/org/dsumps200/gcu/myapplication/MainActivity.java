@@ -10,16 +10,55 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements EarthquakeAdapter.ItemClicked {
 
     //private TextView mTextMessage;
     TextView earthquakeLocation, earthquakeDateTime, earthquakeMagnitude, earthquakeDepth, earthquakeLatitude, earthquakeLongitude;
     LinearLayout listView, detailsView;
 
+    @Override
+    protected void onSaveInstanceState(Bundle b)
+    {
+        int detailsVis = detailsView.getVisibility();
+        int listVis = listView.getVisibility();
+        b.putInt("detailsVis", detailsVis);
+        b.putInt("listVis", listVis);
+        ArrayList<String> detailsData = new ArrayList<>();
+        detailsData.add(earthquakeLocation.getText().toString());
+        detailsData.add(earthquakeDateTime.getText().toString());
+        detailsData.add(earthquakeMagnitude.getText().toString());
+        detailsData.add(earthquakeDepth.getText().toString());
+        detailsData.add(earthquakeLatitude.getText().toString());
+        detailsData.add(earthquakeLongitude.getText().toString());
+        b.putStringArrayList("detailsData", detailsData);
+        super.onSaveInstanceState(b);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int detailsVis = savedInstanceState.getInt("detailsVis");
+        int listVis = savedInstanceState.getInt("listVis");
+        ArrayList<String> detailsData = savedInstanceState.getStringArrayList("detailsData");
+        earthquakeLocation.setText(detailsData.get(0));
+        earthquakeDateTime.setText(detailsData.get(1));
+        earthquakeMagnitude.setText(detailsData.get(2));
+        earthquakeDepth.setText(detailsData.get(3));
+        earthquakeLatitude.setText(detailsData.get(4));
+        earthquakeLongitude.setText(detailsData.get(5));
+        detailsView.setVisibility(detailsVis);
+        listView.setVisibility(listVis);
+        if (listVis == View.GONE) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
