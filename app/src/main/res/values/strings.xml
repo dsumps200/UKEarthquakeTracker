@@ -22,4 +22,5 @@
     <string name="about_magnitude_med">Magnitude is less than 2.5 but greater than (or equal to) 1.5</string>
     <string name="about_magnitude_low">Magnitude is less than 1.5</string>
     <string name="about_disclaimer">Contains British Geological Survey materials ©NERC 2019</string>
+    <string name="title_activity_map">Map</string>
 </resources>

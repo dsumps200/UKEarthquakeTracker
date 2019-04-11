@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
                 case R.id.navigation_home:
                     return true;
                 case R.id.navigation_map:
-                    return true;
+                    Intent map = new Intent (MainActivity.this, MapActivity.class);
+                    startActivity(map);
+                    finish();
                 case R.id.navigation_stats:
                     return true;
                 case R.id.navigation_search:

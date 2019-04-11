@@ -32,7 +32,9 @@ public class AboutActivity extends AppCompatActivity {
                     startActivity(home);
                     finish();
                 case R.id.navigation_map:
-                    return true;
+                    Intent map = new Intent (AboutActivity.this, MapActivity.class);
+                    startActivity(map);
+                    finish();
                 case R.id.navigation_stats:
                     return true;
                 case R.id.navigation_search:
