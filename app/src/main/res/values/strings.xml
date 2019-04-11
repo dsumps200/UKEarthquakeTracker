@@ -21,4 +21,11 @@
     <string name="about_magnitude_med">Magnitude is less than 2.5 but greater than (or equal to) 1.5</string>
     <string name="about_magnitude_low">Magnitude is less than 1.5</string>
     <string name="about_disclaimer">Contains British Geological Survey materials ©NERC 2019</string>
+    <string name="stats_north">Most Northerly Earthquake:</string>
+    <string name="stats_east">Most Easterly Earthquake:</string>
+    <string name="stats_south">Most Southerly Earthquake</string>
+    <string name="stats_west">Most Westerly Earthquake</string>
+    <string name="stats_high_m">Highest Magnitude Earthquake:</string>
+    <string name="stats_high_d">Deepest Earthquake:</string>
+    <string name="stats_low_d">Shallowest Earthquake:</string>
 </resources>

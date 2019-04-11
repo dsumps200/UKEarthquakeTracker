@@ -7,8 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class StatsActivity extends AppCompatActivity {
+
+    TextView northLocation, northDateTime, northLatitude;
+    TextView eastLocation, eastDateTime, eastLongitude;
+    TextView southLocation, southDateTime, southLatitude;
+    TextView westLocation, westDateTime, westLongitude;
+    TextView magLocation, magDateTime, magnitude;
+    TextView highDLocation, highDDateTime, highDDepth;
+    TextView lowDLocation, lowDDateTime, lowDDepth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +30,56 @@ public class StatsActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_stats);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        ArrayList<Earthquake> getStats = getStats();
+        northLocation = findViewById(R.id.northLocation);
+        northLocation.setText(getStats.get(0).getLocation());
+        northDateTime = findViewById(R.id.northDateTime);
+        northDateTime.setText(getStats.get(0).getDateTime());
+        northLatitude = findViewById(R.id.northLatitude);
+        float nLat = getStats.get(0).getLatitude();
+        northLatitude.setText("Latitude: " + Float.toString(nLat));
+        eastLocation = findViewById(R.id.eastLocation);
+        eastLocation.setText(getStats.get(1).getLocation());
+        eastDateTime = findViewById(R.id.eastDateTime);
+        eastDateTime.setText(getStats.get(1).getDateTime());
+        eastLongitude = findViewById(R.id.eastLongitude);
+        float eLong = getStats.get(1).getLongitude();
+        eastLongitude.setText("Longitude: " + Float.toString(eLong));
+        southLocation = findViewById(R.id.southLocation);
+        southLocation.setText(getStats.get(2).getLocation());
+        southDateTime = findViewById(R.id.southDateTime);
+        southDateTime.setText(getStats.get(2).getDateTime());
+        southLatitude = findViewById(R.id.southLatitude);
+        float sLat = getStats.get(2).getLatitude();
+        southLatitude.setText("Latitude: " + Float.toString(sLat));
+        westLocation = findViewById(R.id.westLocation);
+        westLocation.setText(getStats.get(3).getLocation());
+        westDateTime = findViewById(R.id.westDateTime);
+        westDateTime.setText(getStats.get(3).getDateTime());
+        westLongitude = findViewById(R.id.westLongitude);
+        float wLong = getStats.get(3).getLongitude();
+        westLongitude.setText("Longitude: " + Float.toString(wLong));
+        magLocation = findViewById(R.id.magLocation);
+        magLocation.setText(getStats.get(4).getLocation());
+        magDateTime = findViewById(R.id.magDateTime);
+        magDateTime.setText(getStats.get(4).getDateTime());
+        magnitude = findViewById(R.id.magnitude);
+        float mag = getStats.get(4).getMagnitude();
+        magnitude.setText("Magnitude: " + Float.toString(mag));
+        highDLocation = findViewById(R.id.highDLocation);
+        highDLocation.setText(getStats.get(5).getLocation());
+        highDDateTime = findViewById(R.id.highDDateTime);
+        highDDateTime.setText(getStats.get(5).getDateTime());
+        highDDepth = findViewById(R.id.highDDepth);
+        float highDepth = getStats.get(5).getDepth();
+        highDDepth.setText("Depth: " + Float.toString(highDepth));
+        lowDLocation = findViewById(R.id.lowDLocation);
+        lowDLocation.setText(getStats.get(6).getLocation());
+        lowDDateTime = findViewById(R.id.lowDDateTime);
+        lowDDateTime.setText(getStats.get(6).getDateTime());
+        lowDDepth = findViewById(R.id.lowDDepth);
+        float lowDepth = getStats.get(6).getDepth();
+        lowDDepth.setText("Depth: " + Float.toString(lowDepth));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -48,7 +109,7 @@ public class StatsActivity extends AppCompatActivity {
         }
     };
 
-    public Earthquake getNorth() {
+    private Earthquake getNorth() {
         float currentLat = -90;
         Earthquake northEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -61,7 +122,7 @@ public class StatsActivity extends AppCompatActivity {
         } return northEarthquake;
     }
 
-    public Earthquake getEast() {
+    private Earthquake getEast() {
         float currentLong = -1000;
         Earthquake eastEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -74,7 +135,7 @@ public class StatsActivity extends AppCompatActivity {
         } return eastEarthquake;
     }
 
-    public Earthquake getSouth() {
+    private Earthquake getSouth() {
         float currentLat = 90;
         Earthquake southEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -87,7 +148,7 @@ public class StatsActivity extends AppCompatActivity {
         } return southEarthquake;
     }
 
-    public Earthquake getWest() {
+    private Earthquake getWest() {
         float currentLong = 1000;
         Earthquake westEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -100,7 +161,7 @@ public class StatsActivity extends AppCompatActivity {
         } return westEarthquake;
     }
 
-    public Earthquake getHighMagnitude() {
+    private Earthquake getHighMagnitude() {
         float currentMagnitude = -1000;
         Earthquake highMagEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -113,7 +174,7 @@ public class StatsActivity extends AppCompatActivity {
         } return highMagEarthquake;
     }
 
-    public Earthquake getLowDepth() {
+    private Earthquake getLowDepth() {
         int currentDepth = 1000;
         Earthquake lowDepthEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -126,7 +187,7 @@ public class StatsActivity extends AppCompatActivity {
         } return lowDepthEarthquake;
     }
 
-    public Earthquake getHighDepth() {
+    private Earthquake getHighDepth() {
         int currentDepth = -1000;
         Earthquake highDepthEarthquake = Application.earthquakes.get(0);
         for (int i = 0; i < Application.earthquakes.size(); i++) {
@@ -137,5 +198,24 @@ public class StatsActivity extends AppCompatActivity {
                 highDepthEarthquake = earthquake;
             }
         } return highDepthEarthquake;
+    }
+
+    public ArrayList<Earthquake> getStats() {
+        Earthquake north = getNorth();
+        Earthquake east = getEast();
+        Earthquake south = getSouth();
+        Earthquake west = getWest();
+        Earthquake highM = getHighMagnitude();
+        Earthquake highD = getHighDepth();
+        Earthquake lowD = getLowDepth();
+        ArrayList<Earthquake> statsList = new ArrayList<>();
+        statsList.add(north);
+        statsList.add(east);
+        statsList.add(south);
+        statsList.add(west);
+        statsList.add(highM);
+        statsList.add(highD);
+        statsList.add(lowD);
+        return statsList;
     }
 }
