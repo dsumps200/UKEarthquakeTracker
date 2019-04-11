@@ -88,7 +88,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 case R.id.navigation_map:
                     return true;
                 case R.id.navigation_stats:
-                    return true;
+                    Intent stats = new Intent (MapActivity.this, StatsActivity.class);
+                    startActivity(stats);
+                    finish();
                 case R.id.navigation_search:
                     return true;
                 case R.id.navigation_info:
