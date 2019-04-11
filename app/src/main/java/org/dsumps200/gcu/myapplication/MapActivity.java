@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -49,10 +50,29 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        for (int i = 0; i < Application.earthquakes.size(); i++) {
+            Earthquake earthquake = Application.earthquakes.get(i);
+            String location = earthquake.getLocation();
+            float magnitude = earthquake.getMagnitude();
+            String dateTime = earthquake.getDateTime();
+            float latitude = earthquake.getLatitude();
+            float longitude = earthquake.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
+            MarkerOptions markerOptions = new MarkerOptions();
+            if (magnitude >= 2.5) {
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+            } else if (magnitude < 2.5 && magnitude > 1.5) {
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+            } else {
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+            }
+            mMap.addMarker(markerOptions
+                    .position(latLng)
+                    .title(location + "(M " + magnitude + ")")
+                    .snippet(dateTime));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(56, -5)));
+            mMap.moveCamera(CameraUpdateFactory.zoomTo(4));
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
