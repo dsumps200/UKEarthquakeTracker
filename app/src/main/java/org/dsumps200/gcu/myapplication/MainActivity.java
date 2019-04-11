@@ -1,5 +1,6 @@
 package org.dsumps200.gcu.myapplication;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements EarthquakeAdapter.ItemClicked {
 
-    //private TextView mTextMessage;
     TextView earthquakeLocation, earthquakeDateTime, earthquakeMagnitude, earthquakeDepth, earthquakeLatitude, earthquakeLongitude;
     LinearLayout listView, detailsView;
 
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -83,8 +82,8 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         if (getString(R.string.screen_size).equals("tablet") && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             onItemClicked(0);
         }
-        //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_home);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
@@ -103,20 +102,17 @@ public class MainActivity extends AppCompatActivity implements EarthquakeAdapter
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    //mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_map:
-                    //mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_stats:
-                    //mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_search:
-                    //mTextMessage.setText(R.string.title_notifications);
                     return true;
                 case R.id.navigation_info:
-                    //mTextMessage.setText(R.string.title_info);
-                    return true;
+                    Intent info = new Intent (MainActivity.this, AboutActivity.class);
+                    startActivity(info);
+                    finish();
             }
             return false;
         }
