@@ -39,4 +39,5 @@
     <string name="stats_high_m">Highest Magnitude Earthquake:</string>
     <string name="stats_high_d">Deepest Earthquake:</string>
     <string name="stats_low_d">Shallowest Earthquake:</string>
+    <string name="matric">Matric: S1518256</string>
 </resources>
