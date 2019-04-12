@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Name                 David Sumpster
+Student ID           S1518256
+Programme of Study   BSc Computing
+-->
+
 <resources>
     <string name="screen_size">tablet</string>
 </resources>

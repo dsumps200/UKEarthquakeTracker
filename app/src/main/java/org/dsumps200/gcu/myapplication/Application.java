@@ -1,3 +1,9 @@
+//
+// Name                 David Sumpster
+// Student ID           S1518256
+// Programme of Study   BSc Computing
+//
+
 package org.dsumps200.gcu.myapplication;
 
 import android.app.ProgressDialog;
