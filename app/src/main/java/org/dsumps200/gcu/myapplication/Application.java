@@ -29,6 +29,7 @@ public class Application extends android.app.Application {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                earthquakes.clear();
                 new ProcessEarthquakeRss().execute();
                 refreshEarthquakes();
             }

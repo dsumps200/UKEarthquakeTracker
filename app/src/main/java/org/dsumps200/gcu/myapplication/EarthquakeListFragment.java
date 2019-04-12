@@ -49,15 +49,8 @@ public class EarthquakeListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        if (Application.earthquakes.isEmpty()) {
-            try {
-                wait(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } else {
-            adapter = new EarthquakeAdapter(this.getActivity(), Application.earthquakes);
-            recyclerView.setAdapter(adapter);
-        }
+        adapter = new EarthquakeAdapter(this.getActivity(), Application.earthquakes);
+        recyclerView.setAdapter(adapter);
     }
 }
+
