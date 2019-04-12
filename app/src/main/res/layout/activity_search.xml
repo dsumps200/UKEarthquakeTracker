@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Name                 David Sumpster
+Student ID           S1518256
+Programme of Study   BSc Computing
+-->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <LinearLayout
+        android:id="@+id/datesContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <TextView
+            android:id="@+id/searchDatesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find Earthquakes Between:" />
+
+        <LinearLayout
+            android:id="@+id/firstDateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/firstDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Date :" />
+
+            <EditText
+                android:id="@+id/firstDatePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="date" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondDateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/secondDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Date:" />
+
+            <EditText
+                android:id="@+id/secondDatePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="date" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/findDatesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="org.dsumps200.gcu.myapplication.DateRangeListFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/matric"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/datesContainer"
+        tools:layout_editor_absoluteY="146dp"
+        tools:layout="@layout/fragment_earthquake_list" />
+
+    <TextView
+        android:id="@+id/matric"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/colorPrimaryTest"
+        android:textColor="@color/colorBackgroundCard"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/matric" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:itemHorizontalTranslationEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+
+</android.support.constraint.ConstraintLayout>

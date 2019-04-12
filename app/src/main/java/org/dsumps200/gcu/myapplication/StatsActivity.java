@@ -98,18 +98,24 @@ public class StatsActivity extends AppCompatActivity implements AdapterView.OnIt
                     Intent home = new Intent (StatsActivity.this, MainActivity.class);
                     startActivity(home);
                     finish();
+                    break;
                 case R.id.navigation_map:
                     Intent map = new Intent (StatsActivity.this, MapActivity.class);
                     startActivity(map);
                     finish();
+                    break;
                 case R.id.navigation_stats:
                     return true;
                 case R.id.navigation_search:
-                    return true;
+                    Intent search = new Intent (StatsActivity.this, SearchActivity.class);
+                    startActivity(search);
+                    finish();
+                    break;
                 case R.id.navigation_info:
                     Intent info = new Intent (StatsActivity.this, AboutActivity.class);
                     startActivity(info);
                     finish();
+                    break;
             }
             return false;
         }
