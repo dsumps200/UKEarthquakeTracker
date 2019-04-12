@@ -8,6 +8,7 @@ package org.dsumps200.gcu.myapplication;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Handler;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -22,6 +23,17 @@ import java.util.ArrayList;
 public class Application extends android.app.Application {
 
     public static ArrayList<Earthquake> earthquakes;
+    private final Handler handler = new Handler();
+
+    private void refreshEarthquakes() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                new ProcessEarthquakeRss().execute();
+                refreshEarthquakes();
+            }
+        }, 300000);
+    }
 
     @Override
     public void onCreate() {
@@ -29,6 +41,7 @@ public class Application extends android.app.Application {
 
         earthquakes = new ArrayList<>();
         new ProcessEarthquakeRss().execute();
+        refreshEarthquakes();
     }
 
     public InputStream getRssStream(URL url) {
@@ -41,15 +54,11 @@ public class Application extends android.app.Application {
 
     public class ProcessEarthquakeRss extends AsyncTask<Void, Void, Exception> {
 
-        //ProgressDialog progressDialog = new ProgressDialog(Application.this);
         Exception exception = null;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //progressDialog.setMessage("Retrieving Earthquake Data...");
-            //progressDialog.show();
         }
 
         @Override
@@ -61,7 +70,6 @@ public class Application extends android.app.Application {
         @Override
         protected void onPostExecute(Exception e) {
             super.onPostExecute(e);
-            //progressDialog.dismiss();
         }
 
         private void parseEarthquakes() {
